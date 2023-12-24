@@ -1,0 +1,62 @@
+название: Telegram и HTML5-валидатор 
+включено: 
+ push:
+ ветки:
+ - main 
+ pull_request:
+ типы: [открыто, повторно открыто]
+ workflow_dispatch:
+
+Вакансии:
+ строить:
+ name: Уведомление и валидация
+ запуск: ubuntu-последние версии 
+ шаги:
+ - название: Отправить сообщение telegram при нажатии 
+ использует: appleboy /telegram-action@master 
+ с помощью:
+ кому: $ {{ секреты.TG_ID }}
+ токен: $ {{ секреты.TG_TOKEN }}
+ сообщение: |
+ ${{ github.actor }} создал новый коммит: ${{ github.event.commits[0].message }}
+ Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+ Репозиторий: https://github.com/${{ github.repository }}
+ 
+ Действия CI/ CD на github: https://github.com /${{ github.repository }}/действия 
+ https://github.com /${{ github.repository }}/действия/запуски/${{github.run_id}}
+ - название: Оформить заказ 
+ использует: действия / оформить заказ @ v4
+ - название: Пройти проверки Валидатор HTML5 
+название: Telegram и HTML5-валидатор 
+включено: 
+ push:
+ ветки:
+ - main 
+ pull_request:
+ типы: [открыто, повторно открыто]
+ workflow_dispatch:
+
+Вакансии:
+ строить:
+ name: Уведомление и валидация
+ запуск: ubuntu-последние версии 
+ шаги:
+ - название: Отправить сообщение telegram при нажатии 
+ использует: appleboy /telegram-action@master 
+ с помощью:
+ кому: $ {{ секреты.TG_ID }}
+ токен: $ {{ секреты.TG_TOKEN }}
+ сообщение: |
+ ${{ github.actor }} создал новый коммит: ${{ github.event.commits[0].message }}
+ Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+ Репозиторий: https://github.com/${{ github.repository }}
+ 
+ Действия CI/ CD на github: https://github.com /${{ github.repository }}/действия 
+ https://github.com /${{ github.repository }}/действия/запуски/${{github.run_id}}
+ - название: Оформить заказ 
+ использует: действия / оформить заказ @ v4
+ - название: Пройти проверки Валидатор HTML5 
+ использует: Cyb3r-Jak3/html5validator-action-experimental@master 
+ с помощью:
+ root: /
+ ошибка продолжения: true
